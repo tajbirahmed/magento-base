@@ -1,0 +1,10 @@
+/var/
+/pub/static/
+/pub/media/
+/generated/
+/vendor/
+/app/etc/env.php
+/.idea/
+/.htaccess 
+/docker/ 
+

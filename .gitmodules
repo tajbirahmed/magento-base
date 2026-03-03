@@ -1,0 +1,3 @@
+[submodule "app/code/BS23/ChatIntegration"]
+	path = app/code/BS23/ChatIntegration
+	url = git@github-personal.com:tajbiahmed/ChatIntegration.git
