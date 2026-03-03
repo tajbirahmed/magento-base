@@ -1,0 +1,31 @@
+name: Code Quality
+
+on:
+  push: { branches: ["main","develop"] }
+  pull_request:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.1'
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      # Style check
+      - name: PHPCS (Magento standard)
+        run: vendor/bin/phpcs --standard=Magento2 --extensions=php,phtml --report=json --report-file=phpcs-report.json
+
+      # Static analysis
+      - name: PHPStan
+        run: vendor/bin/phpstan analyse -c phpstan.neon --error-format=json > phpstan-report.json
+
+      # Mess detection
+      - name: PHPMD
+        run: vendor/bin/phpmd app/code xml phpmd.xml
+        
