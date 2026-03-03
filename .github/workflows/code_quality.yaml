@@ -13,7 +13,7 @@ jobs:
       - name: Set up PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.1'
+          php-version: '8.4'
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
@@ -28,4 +28,4 @@ jobs:
       # Mess detection
       - name: PHPMD
         run: vendor/bin/phpmd app/code xml phpmd.xml
-        
+
